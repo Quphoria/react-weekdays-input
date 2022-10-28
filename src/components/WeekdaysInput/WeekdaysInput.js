@@ -94,12 +94,12 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
     }
 
     return (
-        <div>
-            <span className='day-of-week-input' style={styles.input}>
+        <div className='react-weekday-input-wrapper'>
+            <span className='react-weekday-input' style={styles.input}>
                 {
                     daysOfWeek.map((day, index) => {
                         let dayStyle = isDayActive(index) ? {...styles.day, ...styles.active} :  {...styles.day, ...styles.inactive}
-                        let className = 'day-of-week-selector'
+                        let className = 'react-weekday-input-selector'
 
                         className += isDayActive(index) ? ' selected' : ''
                         className += isStateForced(index) ? ' disabled' : ' clickable'
