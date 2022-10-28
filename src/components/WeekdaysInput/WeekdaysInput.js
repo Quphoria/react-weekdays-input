@@ -10,7 +10,7 @@ import './WeekdaysInput.css'
  * @param {string} onChange: execute the given function passing the new value as a parameter
  * @returns 
  */
-const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days, activeDayStyle, inactiveDayStyle, forcedState, textCase }) => {
+const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days, activeDayStyle, inactiveDayStyle, forcedState, textCase, wrapperClassName, selectorClassName }) => {
     const isString = typeof value === typeof ""
 
     const styles = {
@@ -83,7 +83,7 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
     const applyCase = text => {
         switch(textCase) {
             case 'firstToUpper':
-                return text.charAt(0).toUpperCase() + text.slice(1);
+                return (text.toLowerCase()).charAt(0).toUpperCase() + text.slice(1);
             case 'toUpper':
                 return text.toUpperCase()
             case 'toLower':
@@ -94,12 +94,12 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
     }
 
     return (
-        <div className='react-weekday-input-wrapper'>
+        <div className={`react-weekday-input-wrapper${wrapperClassName ? ` ${wrapperClassName}`: ""}`}>
             <span className='react-weekday-input' style={styles.input}>
                 {
                     daysOfWeek.map((day, index) => {
                         let dayStyle = isDayActive(index) ? {...styles.day, ...styles.active} :  {...styles.day, ...styles.inactive}
-                        let className = 'react-weekday-input-selector'
+                        let className = `react-weekday-input-selector${selectorClassName ? ` ${selectorClassName}` : ""}`
 
                         className += isDayActive(index) ? ' selected' : ''
                         className += isStateForced(index) ? ' disabled' : ' clickable'
