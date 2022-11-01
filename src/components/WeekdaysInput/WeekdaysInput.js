@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import './WeekdaysInput.css'
 
@@ -10,7 +10,7 @@ import './WeekdaysInput.css'
  * @param {string} onChange: execute the given function passing the new value as a parameter
  * @returns 
  */
-const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days, activeDayStyle, inactiveDayStyle, forcedState, textCase, wrapperClassName, selectorClassName }) => {
+const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days, activeDayStyle, inactiveDayStyle, forcedState, textCase, wrapperClassName, selectorClassName, renderOrder }) => {
     const isString = typeof value === typeof ""
 
     const styles = {
@@ -29,11 +29,13 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
         }
     }
     
-    if(inputStyle !== null){
+    if (inputStyle !== null) {
         styles.input = {...inputStyle, display: 'inline-flex'}
     }
-    if(dayStyle !== null)
-    styles.day = dayStyle
+
+    if (dayStyle !== null) {
+		styles.day = dayStyle
+	}
     
     const isDayActive   = index => isString ? daysOfWeek[index] === '1' : daysOfWeek[index] === 1
     const isStateForced = index => forcedState[index] !== 'none'
@@ -58,7 +60,7 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
         
         let toCompare = isString ? newValue.join('') : v
         
-        if(toCompare !== v){
+        if (toCompare !== v) {
             onChange(isString ? applyForcedStates(newValue.slice(0, 7)).join('') : applyForcedStates(newValue.slice(0, 7)))
         }
 
@@ -70,7 +72,7 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
     const selectDay = (e, index) => {
         e.preventDefault()
         let newDaysOfWeek = daysOfWeek
-        if(isString){
+        if (isString) {
             newDaysOfWeek[index] = newDaysOfWeek[index] === '0' ? '1' : '0'
             onChange(applyForcedStates(newDaysOfWeek).join(''))
         } else {
@@ -81,7 +83,7 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
     }
 
     const applyCase = text => {
-        switch(textCase) {
+        switch (textCase) {
             case 'firstToUpper':
                 return (text.toLowerCase()).charAt(0).toUpperCase() + text.slice(1);
             case 'toUpper':
@@ -97,21 +99,21 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
         <div className={`react-weekday-input-wrapper${wrapperClassName ? ` ${wrapperClassName}`: ""}`}>
             <span className='react-weekday-input' style={styles.input}>
                 {
-                    daysOfWeek.map((day, index) => {
-                        let dayStyle = isDayActive(index) ? {...styles.day, ...styles.active} :  {...styles.day, ...styles.inactive}
+					renderOrder.map((dayIndex, orderIndex) => {
+                        let dayStyle = isDayActive(dayIndex) ? {...styles.day, ...styles.active} :  {...styles.day, ...styles.inactive}
                         let className = `react-weekday-input-selector${selectorClassName ? ` ${selectorClassName}` : ""}`
 
-                        className += isDayActive(index) ? ' selected' : ''
-                        className += isStateForced(index) ? ' disabled' : ' clickable'
+                        className += isDayActive(dayIndex) ? ' selected' : ''
+                        className += isStateForced(dayIndex) ? ' disabled' : ' clickable'
 
                         return (
                             <div 
-                                key={index}
+                                key={dayIndex}
                                 style={dayStyle} 
                                 className={className}
-                                onClick={(e) => selectDay(e, index)}
+                                onClick={(e) => selectDay(e, dayIndex)}
                             >
-                                    {applyCase(showChars === null ? days[index] : days[index].slice(0, showChars))}
+                                    {applyCase(showChars === null ? days[dayIndex] : days[dayIndex].slice(0, showChars))}
                             </div>
                         )
                     })
@@ -130,7 +132,10 @@ WeekdaysInput.propTypes = {
     inputStyle: PropTypes.object,
     dayStyle: PropTypes.object,
     forcedState: PropTypes.object,
-    textCase: PropTypes.string
+    textCase: PropTypes.string,
+    wrapperClassName: PropTypes.string,
+    selectorClassName: PropTypes.string,
+	renderOrder: PropTypes.array,
 }
 
 WeekdaysInput.defaultProps = {
@@ -164,6 +169,9 @@ WeekdaysInput.defaultProps = {
     inputStyle: null,
     dayStyle: null,
     textCase: null,
+	wrapperClassName: "",
+	selectorClassName: "",
+	renderOrder: [0, 1, 2, 3, 4, 5, 6]
 }
 
 export default WeekdaysInput
