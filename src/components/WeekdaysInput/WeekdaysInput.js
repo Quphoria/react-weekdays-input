@@ -69,6 +69,10 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
 
     const [daysOfWeek, setDaysOfWeek] = useState(validateValue(value))
 
+	useEffect(() => {
+		setDaysOfWeek(validateValue(value));
+	}, [value]);
+
     const selectDay = (e, index) => {
         e.preventDefault()
         let newDaysOfWeek = daysOfWeek
