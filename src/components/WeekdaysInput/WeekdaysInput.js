@@ -16,10 +16,12 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
     const styles = {
         input: {
             display: "inline-flex",
+            borderRadius: '10px',
+            boxShadow: "0px 7px 30px 0px rgb(90 114 123 / 30%)",
+            overflow: 'hidden'
         },
         day: {
-            border: "1px grey solid",
-            padding: "5px",
+            padding: "7px 10px",
         },
         inactive: {
             ...inactiveDayStyle
