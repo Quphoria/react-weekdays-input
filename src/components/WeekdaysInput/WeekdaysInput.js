@@ -18,9 +18,10 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
             display: "inline-flex",
             borderRadius: '10px',
             boxShadow: "0px 7px 30px 0px rgb(90 114 123 / 30%)",
-            overflow: 'hidden'
+            overflow: 'hidden',
         },
         day: {
+            transition: 'background-color 0.1s ease',
             padding: "7px 10px",
         },
         inactive: {
