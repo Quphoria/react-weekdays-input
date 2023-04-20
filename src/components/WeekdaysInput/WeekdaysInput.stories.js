@@ -11,16 +11,19 @@ export default {
 };
 
 const Template = (args) => {
-    const [days, setDays] = useState("0001100")
-    const [daysObject, setDaysObject] = useState([0, 1, 0, 0, 0, 0, 1])
-    return (<>
-        <span>String value</span>
-        <WeekdaysInput value={days} onChange={(value) => setDays(value)} {...args} />
-        <span>Object value</span>
-        <WeekdaysInput value={daysObject} onChange={(value) => setDays(setDaysObject)} {...args} />
+    const [days, setDays] = useState("0001100");
+    const [daysObject, setDaysObject] = useState([0, 1, 0, 0, 0, 0, 1]);
 
-        {daysObject.map(value => <span>{value}</span>)}
-    </>)
+    return (
+		<>
+			<span>String value</span>
+			<WeekdaysInput value={days} onChange={(value) => setDays(value)} {...args} />
+			<span>Object value</span>
+			<WeekdaysInput value={daysObject} onChange={(value) => setDays(setDaysObject)} {...args} />
+
+			{daysObject.map(value => <span>{value}</span>)}
+		</>
+	);
 };
 
 export const Primary = Template.bind({});
@@ -33,7 +36,7 @@ Primary.args = {
         "thursday",
         "friday",
         "saturday",
-        "sunday",
+        "sunday"
     ],
     forcedState: {
         0: "none",
@@ -49,7 +52,7 @@ Primary.args = {
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-    days:[
+    days: [
         "monday",
         "tuesday",
         "wednesday",
@@ -57,21 +60,21 @@ Secondary.args = {
         "friday",
         "saturday",
         "sunday"
-    ]  ,      
-    showChars:2, //mo, tu, we, th, fr, sa, su
-    activeDayStyle:{
+    ],      
+    showChars: 2, //mo, tu, we, th, fr, sa, su
+    activeDayStyle: {
         backgroundColor: "green",
         color: "white"
     },
-    inactiveDayStyle:{
+    inactiveDayStyle: {
         backgroundColor: "pink",
         color: "black"
     },
-    inputStyle:{
+    inputStyle: {
         margin: "10px",
         color: "white",
     },
-    dayStyle:{
+    dayStyle: {
         border: "2px dotted black",
     },
 };
