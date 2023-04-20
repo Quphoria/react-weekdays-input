@@ -1,75 +1,78 @@
 {
-  "name": "react-weekdays-input",
-  "version": "1.2.23",
-  "description": "A highly customizable and easy to use react input that allows users to select days of the week with a user friendly interface",
-  "scripts": {
-    "rollup": "rollup -c",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
-    "publish_github": "npmrc axelmy_github && npm run rollup && npm publish",
-    "publish_npmjs": "npmrc axelmy_npmjs && npm run rollup && npm publish --access=public --scope=unscoped"
-  },
-  "author": {
-    "name": "Axel Milliery",
-    "email": "a.milliery@icloud.com"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.16.10",
-    "@babel/preset-env": "^7.16.11",
-    "@babel/preset-react": "^7.16.7",
-    "@rollup/plugin-commonjs": "^21.0.1",
-    "@rollup/plugin-node-resolve": "^13.1.3",
-    "@storybook/addon-actions": "^6.4.14",
-    "@storybook/addon-essentials": "^6.4.14",
-    "@storybook/addon-links": "^6.4.14",
-    "@storybook/react": "^6.4.14",
-    "babel": "^6.23.0",
-    "babel-loader": "^8.2.3",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "npmrc": "^1.1.1",
-    "postcss": "^8.4.18",
-    "rollup": "^2.65.0",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-postcss": "^4.0.2"
-  },
-  "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/axelmy318/react-weekdays-input.git"
-  },
-  "keywords": [
-    "npm",
-    "npmjs",
-    "git",
-    "github",
-    "javascript",
-    "react",
-    "reactjs",
-    "input",
-    "time",
-    "date",
-    "day-picker",
-    "day",
-    "days",
-    "of",
-    "the",
-    "week",
-    "picker",
-    "input",
-    "weekdays-picker"
-  ],
-  "dependencies": {}
+	"name": "react-weekdays-input",
+	"version": "1.2.23",
+	"description": "A highly customizable and easy to use react input that allows users to select days of the week with a user friendly interface",
+	"scripts": {
+		"rollup": "rollup -c",
+		"storybook": "start-storybook -p 6006",
+		"build-storybook": "build-storybook",
+		"publish_github": "npmrc axelmy_github && npm run rollup && npm publish",
+		"publish_npmjs": "npmrc axelmy_npmjs && npm run rollup && npm publish --access=public --scope=unscoped"
+	},
+	"author": {
+		"name": "Axel Milliery",
+		"email": "a.milliery@icloud.com"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"@babel/core": "^7.21.4",
+		"@babel/preset-env": "^7.21.4",
+		"@babel/preset-react": "^7.18.6",
+		"@rollup/plugin-babel": "^6.0.3",
+		"@rollup/plugin-commonjs": "^24.1.0",
+		"@rollup/plugin-node-resolve": "^15.0.2",
+		"@storybook/addon-actions": "^7.0.6",
+		"@storybook/addon-essentials": "^7.0.6",
+		"@storybook/addon-links": "^7.0.6",
+		"@storybook/react": "^7.0.6",
+		"@types/react": "^18.0.37",
+		"babel": "^6.23.0",
+		"babel-loader": "^9.1.2",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"npmrc": "^1.1.1",
+		"postcss": "^8.4.23",
+		"rollup": "^3.20.6",
+		"rollup-plugin-copy": "^3.4.0",
+		"rollup-plugin-peer-deps-external": "^2.2.4",
+		"rollup-plugin-postcss": "^4.0.2",
+		"typescript": "^5.0.4"
+	},
+	"peerDependencies": {
+		"react": "^17.0.2",
+		"react-dom": "^17.0.2"
+	},
+	"main": "dist/cjs/index.js",
+	"module": "dist/esm/index.js",
+	"types": "dist/types/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/axelmy318/react-weekdays-input.git"
+	},
+	"keywords": [
+		"npm",
+		"npmjs",
+		"git",
+		"github",
+		"javascript",
+		"react",
+		"reactjs",
+		"input",
+		"time",
+		"date",
+		"day-picker",
+		"day",
+		"days",
+		"of",
+		"the",
+		"week",
+		"picker",
+		"input",
+		"weekdays-picker"
+	]
 }
