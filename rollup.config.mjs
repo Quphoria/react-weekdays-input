@@ -1,12 +1,12 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import babel from "rollup-plugin-babel";
+import babel from "@rollup/plugin-babel";
 import postcss from "rollup-plugin-postcss";
 import external from "rollup-plugin-peer-deps-external";
+import copy from "rollup-plugin-copy";
+import packageJson from "./package.json" assert {type: "json"};
 
-const packageJson = require("./package.json")
-
-const EXTENSIONS = [".ts", ".tsx", ".js", ".jsx", ".json"];
+const EXTENSIONS = [".ts", ".tsx", ".js", ".jsx", ".json", ".d.ts"];
 
 export default [
     {
@@ -32,13 +32,14 @@ export default [
             external({
                 includeDependencies: true,
             }),
-            babel({
-                presets: [["@babel/preset-env", { modules: false }], "@babel/preset-react"],
-                extensions: EXTENSIONS,
-                exclude: "node_modules/**",
-            }),
+            babel({babelHelpers: "bundled"}),
             commonjs(),
             postcss(),
+			copy({
+				targets: [
+					{src: "src/index.d.ts", dest: "dist/types/index.d.ts"}
+				]
+			})
         ],
     },
     {
