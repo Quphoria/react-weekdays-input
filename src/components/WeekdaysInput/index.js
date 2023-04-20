@@ -1,1 +1,1 @@
-export { default } from './WeekdaysInput'
+export { default } from "./WeekdaysInput";

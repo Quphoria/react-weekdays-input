@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import './WeekdaysInput.css'
+import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import "./WeekdaysInput.css";
 
 /**
  * 
@@ -30,25 +30,25 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
     }
     
     if (inputStyle !== null) {
-        styles.input = {...inputStyle, display: 'inline-flex'}
+        styles.input = {...inputStyle, display: "inline-flex"}
     }
 
     if (dayStyle !== null) {
 		styles.day = dayStyle
 	}
     
-    const isDayActive   = index => isString ? daysOfWeek[index] === '1' : daysOfWeek[index] === 1
-    const isStateForced = index => forcedState[index] !== 'none'
+    const isDayActive   = index => isString ? daysOfWeek[index] === "1" : daysOfWeek[index] === 1
+    const isStateForced = index => forcedState[index] !== "none"
 
     const applyForcedStates = (v) => {
         return Object.keys(forcedState).map(index => {
             switch(forcedState[index]){
-                case 'none':
+                case "none":
                     return v[index]
                 case 'active':
-                    return isString ? '1' : 1
+                    return isString ? "1" : 1
                 case 'inactive':
-                    return isString ? '0' : 0
+                    return isString ? "0" : 0
                 default:
                     return v[index]
             }
@@ -58,10 +58,10 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
     const validateValue = (v) => {
         let newValue = applyForcedStates(v)
         
-        let toCompare = isString ? newValue.join('') : v
+        let toCompare = isString ? newValue.join("") : v
         
         if (toCompare !== v) {
-            onChange(isString ? applyForcedStates(newValue.slice(0, 7)).join('') : applyForcedStates(newValue.slice(0, 7)))
+            onChange(isString ? applyForcedStates(newValue.slice(0, 7)).join("") : applyForcedStates(newValue.slice(0, 7)))
         }
 
         return newValue.slice(0, 7)
@@ -77,8 +77,8 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
         e.preventDefault()
         let newDaysOfWeek = daysOfWeek
         if (isString) {
-            newDaysOfWeek[index] = newDaysOfWeek[index] === '0' ? '1' : '0'
-            onChange(applyForcedStates(newDaysOfWeek).join(''))
+            newDaysOfWeek[index] = newDaysOfWeek[index] === "0" ? "1" : "0"
+            onChange(applyForcedStates(newDaysOfWeek).join(""))
         } else {
             newDaysOfWeek[index] = newDaysOfWeek[index] === 0 ? 1 : 0
             onChange(applyForcedStates(newDaysOfWeek))
@@ -88,11 +88,11 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
 
     const applyCase = text => {
         switch (textCase) {
-            case 'firstToUpper':
+            case "firstToUpper":
                 return (text.toLowerCase()).charAt(0).toUpperCase() + text.slice(1);
-            case 'toUpper':
+            case "toUpper":
                 return text.toUpperCase()
-            case 'toLower':
+            case "toLower":
                 return text.toLowerCase()
             default:
                 return text
@@ -101,14 +101,14 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
 
     return (
         <div className={`react-weekday-input-wrapper${wrapperClassName ? ` ${wrapperClassName}`: ""}`}>
-            <span className='react-weekday-input' style={styles.input}>
+            <span className="react-weekday-input" style={styles.input}>
                 {
 					renderOrder.map((dayIndex, orderIndex) => {
                         let dayStyle = isDayActive(dayIndex) ? {...styles.day, ...styles.active} :  {...styles.day, ...styles.inactive}
                         let className = `react-weekday-input-selector${selectorClassName ? ` ${selectorClassName}` : ""}`
 
-                        className += isDayActive(dayIndex) ? ' selected' : ''
-                        className += isStateForced(dayIndex) ? ' disabled' : ' clickable'
+                        className += isDayActive(dayIndex) ? " selected" : ""
+                        className += isStateForced(dayIndex) ? " disabled" : " clickable"
 
                         return (
                             <div 
@@ -143,32 +143,32 @@ WeekdaysInput.propTypes = {
 }
 
 WeekdaysInput.defaultProps = {
-    value: '0000000',
+    value: "0000000",
     showChars: null,
     onChange: function(v){},
     days: [
-        'monday', 
-        'tuesday',
-        'wednesday',
-        'thursday',
-        'friday',
-        'saturday',
-        'sunday',
+        "monday", 
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+        "sunday",
     ],
     forcedState: {
-        0: 'none',
-        1: 'none',
-        2: 'none',
-        3: 'none',
-        4: 'none',
-        5: 'none',
-        6: 'none'
+        0: "none",
+        1: "none",
+        2: "none",
+        3: "none",
+        4: "none",
+        5: "none",
+        6: "none"
     },
     activeDayStyle: {
-        backgroundColor: 'skyblue'
+        backgroundColor: "skyblue"
     },
     inactiveDayStyle: {
-        backgroundColor: 'transparent'
+        backgroundColor: "transparent"
     },
     inputStyle: null,
     dayStyle: null,
