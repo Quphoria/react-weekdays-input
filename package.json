@@ -1,6 +1,6 @@
 {
 	"name": "react-weekdays-input",
-	"version": "1.2.23",
+	"version": "1.3.0",
 	"description": "A highly customizable and easy to use react input that allows users to select days of the week with a user friendly interface",
 	"scripts": {
 		"rollup": "rollup -c",
@@ -74,5 +74,8 @@
 		"picker",
 		"input",
 		"weekdays-picker"
-	]
+	],
+	"dependencies": {
+		"how-to-npm": "^2.5.1"
+	}
 }
