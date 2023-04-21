@@ -51,9 +51,9 @@ const WeekdaysInput = ({ value, showChars, onChange, inputStyle, dayStyle, days,
             switch (forcedState[index]) {
                 case "none":
                     return v[index];
-                case 'active':
+                case "active":
                     return isString ? "1" : 1;
-                case 'inactive':
+                case "inactive":
                     return isString ? "0" : 0;
                 default:
                     return v[index];
