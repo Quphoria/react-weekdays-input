@@ -37,7 +37,7 @@ export default [
             postcss(),
 			copy({
 				targets: [
-					{src: "src/index.d.ts", dest: "dist/types/index.d.ts"}
+					{src: "src/index.d.ts", dest: "dist/types"}
 				]
 			})
         ],
