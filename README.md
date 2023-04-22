@@ -79,7 +79,7 @@ export default Example
 |--|--|--|--|
 | value | string/array(int) | "0000000" | A string or an array of 7 integers representing the active days of the week. 0 being inactive, 1 being active. |
 | showChars | int | null | The numbers of chars to show for the days names. Ex: Monday=Mo. null will display the entire word |
-| onChange | function | | The function that will be called when the user clicks on a day |
+| onChange | function(string)/function(array(int)) | | The function that will be called when the user clicks on a day which provides the new value as a parameter. |
 | days | array | ['monday','tuesday','wednesday'... | The array defining the name of the days |
 | activeDayStyle | string |  | The CSS styling to apply to active days |
 | inactiveDayStyle | string |  | The CSS styling to apply to inactive days |
@@ -87,4 +87,6 @@ export default Example
 | dayStyle | object |  | The CSS styling used for each days |
 | forcedState | object |  | Force certain days to be active or inactive. See examples above |
 | textCase | string | null | Defines the case of the text. Available: firstToUpper (Monday), toUpper (MONDAY), toLower (monday) |
-
+| wrapperClassName | string | null| A class that you may optionally provide for external modifications of the wrapper style. |
+| selectorClassName | string | null| A class that you may optionally provide for external modifications of the day selection style. |
+| renderOrder | array(int) | [0, 1, 2, 3, 4, 5, 6] | Determines which position each day will render. [Index]: the renderring slot. [Value]: The numeric value representing a day (nth index of the days array) that should be renderred in this slot. (Useful for renderring days in a different order, rather than the order in which they appear in the days parameter) |
