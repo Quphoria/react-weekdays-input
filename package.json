@@ -82,8 +82,5 @@
 		"picker",
 		"input",
 		"weekdays-picker"
-	],
-	"dependencies": {
-		"how-to-npm": "^2.5.1"
-	}
+	]
 }
